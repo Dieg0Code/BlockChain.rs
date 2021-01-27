@@ -1,3 +1,3 @@
-# BlockChain.rs
+# Blockchain.rs
 
 Blockchain implementation in Rust :crab:
