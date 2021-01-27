@@ -22,4 +22,20 @@ Puedes pensar en esto como: generar el hash correcto para un bloque es como un p
 3. Check hash against difficulty
    a. Insifficient? Go back to step 1
    b. Sufficient? Continue to step 2
-4. Añade el bloque a la cadena 
+4. Añade el bloque a la cadena
+
+## Review: Mining
+
+Que un bloque haya sido minado significa que se ha puesto una cantidad de esfuerzo en descubrir un **nonce** la "llave" que "desbloquea" el "puzzle" basado en Hash.
+
+Minar tiene la propiedad de que es un problema difícil de solucionar, mientras que la solución es fácil de verificar.
+
+Tiene una dificultad la cual debe irse adaptando a la cantidad de esfuerzo que es puesto por los mineros de la red para mantener la media de tiempo que toma minar un bloque.
+
+Bitcoin ajusta su dificultad cada 2016 bloques tal que los próximos 2016 bloques debieran de tardar dos semanas en ser minados.
+
+## Block Verification
+
+Dada la implementación que tenemos, podemos implementar unos rudimentarios test de verificación de bloques. Estos pasos deben ser ejecutados cuando sea que recibimos un nuevo bloque de un peer.
+
+Cada "supuesto" bloque valido tiene un nonce añadido a el, por lo que asumimos que tomo una aproximada cierta cantidad de esfuerzo en ser generado. Esta "aproximada cierta cantidad de esfuerzo" es descrita por el valor de la dificultad.

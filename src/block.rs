@@ -5,7 +5,7 @@ pub struct Block {
     pub index: u32,
     pub timestamp : u128,
     pub hash: BlockHash,
-    pub pre_block_hash: BlockHash,
+    pub prev_block_hash: BlockHash,
     pub nonce: u64,
     pub payload: String,
     pub difficulty: u128,
@@ -26,7 +26,7 @@ impl Block {
     pub fn new(
         index: u32,
         timestamp : u128,
-        pre_block_hash: BlockHash,
+        prev_block_hash: BlockHash,
         nonce: u64,
         payload: String,
         difficulty: u128
@@ -35,7 +35,7 @@ impl Block {
             index,
             timestamp,
             hash: vec![0; 32],// sha256 256 bits = 32 bytes
-            pre_block_hash,
+            prev_block_hash,
             nonce,
             payload,
             difficulty,
@@ -61,7 +61,7 @@ impl Hashable for Block {
 
         bytes.extend(&u32_bytes(&self.index));
         bytes.extend(&u128_bytes(&self.timestamp));
-        bytes.extend(&self.pre_block_hash);
+        bytes.extend(&self.prev_block_hash);
         bytes.extend(&u64_bytes(&self.nonce));
         bytes.extend(self.payload.as_bytes());
         bytes.extend(&u128_bytes(&self.difficulty));
