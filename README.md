@@ -2,6 +2,10 @@
 
 Blockchain implementation in Rust :crab:
 
+![ferris](img/ferris.gif)
+
+##### *fuente original [aquí](https://www.youtube.com/playlist?list=PLwnSaD6BDfXL0RiKT_5nOIdxTxZWpPtAv)*
+
 ## Block Hashing:
 
 1. Concatena juntos todos los bytes que componen un bloque
