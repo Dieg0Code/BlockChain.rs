@@ -52,10 +52,10 @@ Tenemos que protegernos contra:
 
 ¿Que significa ser dueño de una moneda?
 
-| Block 123 | Block 124 | Block 125 | Block 126 |
-| :-------: | :-------: | :-------: | :-------: |
-| Jaime -> Andrew(15) | Francis -> Chris(34) | **alice -> Bob(12)**  | Chirs -> Zach(3)   |
-| Chirs -> Alice(50)  | Michiko -> Bob(7)    | Zach -> Jaime(2)      | Zach -> Chris(2)   |
+|      Block 123      |      Block 124       |       Block 125       |     Block 126      |
+| :-----------------: | :------------------: | :-------------------: | :----------------: |
+| Jaime -> Andrew(15) | Francis -> Chris(34) | **alice -> Bob(12)**  |  Chirs -> Zach(3)  |
+| Chirs -> Alice(50)  |  Michiko -> Bob(7)   |   Zach -> Jaime(2)    |  Zach -> Chris(2)  |
 |                     | Terrance -> Bob(87)  | Chris -> Terrance(18) | Chris -> Zach(10)  |
 |                     |                      |                       | Zach -> Sophia(18) |
 
@@ -114,3 +114,31 @@ Esto se puede hacer manteniendo una pool de outputs no gastados y rechazar cualq
 Esto puede ser solucionado añadiendo un firma criptográfica a los outputs para verificar que están siendo gastados por su dueño.
 
 No podemos asumir que quien sea que nos envió la transacción en la red es también la persona que creo la transacción.
+
+## Iterators
+
+Los iteradores nos ayudan a procesar secuencias de datos. Los iteradores de Rust son especialmente poderosos.
+
+Para acceder al iterador de un vector, usamos la función its.iter(). Entonces tenemos acceso a las "lazy-evaluated functions" como map, flat_map, filter, for_each, any, all, etc.
+
+Otra función poderosa es .collect::<B>(). Esta evaluara el iterador y lo transformara en cual sea el tipo 'B' que le des. El tipo 'B' debe implementar el "FromIterator trait", pero la mayoría de las estructuras de datos de la biblioteca estándar deberían funcionar. Por ejemplo: String Vec, HashMap, HashSet, LinkedList, etc.
+
+## Errors
+
+En Rust, hay esencialmente dos tipos de errores: Result<T,E> y panic!. Result<T,E> es igual a cualquier otro tipo de dato, es solo parte de la biblioteca estándar. Estos toman la forma de cual sea el Result::Ok<T> o Result::(E), podemos desestructurarlos si es necesario. panic! por otro lado, no pueden ser usados como cualquier otro tipo de dato. Estos alteraran el flujo del programa, haciéndolo crashear. Idealmente siempre queremos usar Result<T,E> en vez de panic!.
+
+## Null
+
+No existe algo como null en Rust!
+
+Lo mas cercano a esto que hay en la biblioteca estándar es Option<T>: un enum el cual comunica la existencia de un valor. Puede tomar la forma de Option::Some<T> o Option::None, donde Option::None es probablemente lo mas cercano a null que veremos en Rust
+
+## Updating our blockchain
+
+Ahora que debemos mantener una lista de outputs sin gastar. Esto solo sera un set de hashes de los outputs sin gastar.
+
+Ahora debemos validar tres nuevas condiciones:
+
+- Podemos gastar el input?
+- Cuantas monedas hay en el output?
+- Es la transacción coinbase valida?
