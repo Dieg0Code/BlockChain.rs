@@ -125,17 +125,17 @@ Los iteradores nos ayudan a procesar secuencias de datos. Los iteradores de Rust
 
 Para acceder al iterador de un vector, usamos la función its.iter(). Entonces tenemos acceso a las "lazy-evaluated functions" como map, flat_map, filter, for_each, any, all, etc.
 
-Otra función poderosa es .collect::<B>(). Esta evaluara el iterador y lo transformara en cual sea el tipo 'B' que le des. El tipo 'B' debe implementar el "FromIterator trait", pero la mayoría de las estructuras de datos de la biblioteca estándar deberían funcionar. Por ejemplo: String Vec, HashMap, HashSet, LinkedList, etc.
+Otra función poderosa es .collect::\<B>(). Esta evaluara el iterador y lo transformara en cual sea el tipo 'B' que le des. El tipo 'B' debe implementar el "FromIterator trait", pero la mayoría de las estructuras de datos de la biblioteca estándar deberían funcionar. Por ejemplo: String Vec, HashMap, HashSet, LinkedList, etc.
 
 ## Errors
 
-En Rust, hay esencialmente dos tipos de errores: Result<T,E> y panic!. Result<T,E> es igual a cualquier otro tipo de dato, es solo parte de la biblioteca estándar. Estos toman la forma de cual sea el Result::Ok<T> o Result::(E), podemos desestructurarlos si es necesario. panic! por otro lado, no pueden ser usados como cualquier otro tipo de dato. Estos alteraran el flujo del programa, haciéndolo crashear. Idealmente siempre queremos usar Result<T,E> en vez de panic!.
+En Rust, hay esencialmente dos tipos de errores: Result<T,E> y panic!. Result<T,E> es igual a cualquier otro tipo de dato, es solo parte de la biblioteca estándar. Estos toman la forma de cual sea el Result::Ok\<T> o Result::(E), podemos desestructurarlos si es necesario. panic! por otro lado, no pueden ser usados como cualquier otro tipo de dato. Estos alteraran el flujo del programa, haciéndolo crashear. Idealmente siempre queremos usar Result<T,E> en vez de panic!.
 
 ## Null
 
 No existe algo como null en Rust!
 
-Lo mas cercano a esto que hay en la biblioteca estándar es Option<T>: un enum el cual comunica la existencia de un valor. Puede tomar la forma de Option::Some<T> o Option::None, donde Option::None es probablemente lo mas cercano a null que veremos en Rust
+Lo mas cercano a esto que hay en la biblioteca estándar es Option\<T>: un enum el cual comunica la existencia de un valor. Puede tomar la forma de Option::Some\<T> o Option::None, donde Option::None es probablemente lo mas cercano a null que veremos en Rust
 
 ## Updating our blockchain
 
